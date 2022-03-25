@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useRef} from "react";
 
 function Modal(props) {
+  const infoInputRef = useRef();
+
   function saveHandler() {
     props.onCancel();
   }
@@ -18,7 +20,11 @@ function Modal(props) {
             return (
               <li key={info.id}>
                 {info.label}
-                <input type="text" name="country" id="country" value={info.content}/> 
+                <input
+                  type="text"
+                  ref={infoInputRef}
+                  defaultValue={info.content}
+                />
               </li>
             );
           })}

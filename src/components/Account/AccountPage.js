@@ -2,6 +2,7 @@ import React from "react";
 import profilepic from "./images/profilepic.png";
 import "./AccountPage.css";
 import InfoSection from "./InfoSection";
+import GoalCompletionSection from "./GoalCompletionSection";
 
 const generalInfo = [
   {
@@ -69,18 +70,20 @@ function AccountPage() {
   return (
     <div>
       <header className="account-header">
-        {/* <img
-          style={{
-            borderRadius: "50%",
-            display: "block",
-            background: `url('https://cdn.icon-icons.com/icons2/1186/PNG/512/1490135017-visa_82256.png') black`,
-            backgroundPosition: "center",
-            backgroundSize: "auto 80px",
-          }}
-          className="profileP"
-          src={profilepic}
-          alt=""
-        /> */}
+        {
+          <img
+            style={{
+              borderRadius: "50%",
+              display: "block",
+              background: `url('https://cdn.icon-icons.com/icons2/1186/PNG/512/1490135017-visa_82256.png') black`,
+              backgroundPosition: "center",
+              backgroundSize: "auto 80px",
+            }}
+            className="profileP"
+            src={profilepic}
+            alt=""
+          />
+        }
         <p>ACCOUNT INFORMATION</p>
         {/* <a
           className="App-link"
@@ -93,9 +96,21 @@ function AccountPage() {
       </header>
 
       <ul className="account">
-        <li><InfoSection title="General" info={generalInfo} /></li>
-        <li><InfoSection title="Measurements" info={measurementInfo} /></li>
-        <li><InfoSection title="Address" info={addressInfo} /></li>
+        {/* Requirement 1.1.0 */}
+        <li>
+          <InfoSection title="General" info={generalInfo} />
+        </li>
+        {/* Requirement 1.2.0 */}
+        <li>
+          <InfoSection title="Measurements" info={measurementInfo} />
+        </li>
+        {/* Requirement 1.3.0 */}
+        <li>
+          <InfoSection title="Address" info={addressInfo} />
+        </li>
+        <li>
+          <GoalCompletionSection title="Daily Goal Completion" />
+        </li>
       </ul>
     </div>
   );

@@ -18,7 +18,7 @@ function InfoSection(props) {
     <div>
       <div className="card">
         <h3>{props.title}</h3>
-        <div className="line-break">
+        <div>
           <ul>
             {props.info.map((info) => {
             return <li key={info.id}>{info.label} {info.content}</li>
