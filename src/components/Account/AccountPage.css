@@ -7,14 +7,13 @@ body{
 }
 
 .account-header {
-    background-color: #89cf6d;
-    
+   
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
   }
 
   .account-link {
@@ -37,7 +36,6 @@ body{
     display: inline-block;
     padding: 5px 5px;
     vertical-align: top;
-  
   }
 
   

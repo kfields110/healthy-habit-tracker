@@ -2,13 +2,16 @@ import React, {useRef} from "react";
 
 function Modal(props) {
   const infoInputRef = useRef();
+  var data = "from Modal to Info section";
 
   function saveHandler() {
-    props.onCancel();
+    data = infoInputRef.current.value;
+    props.modalToInfoSection(data);
+    props.onSave();
   }
 
   function cancelHandler() {
-    props.onSave();
+    props.onCancel();
   }
 
   return (
