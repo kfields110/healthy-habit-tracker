@@ -1,0 +1,9 @@
+#content { display: flex; }
+#content > div:nth-child(2) { flex: 1; }
+
+.card{
+
+    margin-left: auto;
+    margin-right: auto;
+}
+

@@ -1,4 +1,4 @@
-import classes from './Leaderboard.css';
+import './Leaderboard.css';
 import Profiles from '../Profile/Profile';
 import { users } from '../Database/database';
 import React, { useState } from 'react';
@@ -14,9 +14,10 @@ const Leaderboard = () => {
         setPeriod(props.target.dataset.id)
     }
     return (
-        <Card className={classes.input}>
+        
         <div className="board">
-            <h1 className='leaderboard'>Leader Board</h1>
+            <Card >
+            <h1 className="leaderboard">Leader Board</h1>
 
             <div className='duration'>
                 <button onClick={handleClick} data-id='7'>7 Days</button>
@@ -25,8 +26,9 @@ const Leaderboard = () => {
             </div>
 
             <Profiles Leaderboard={between(users, period)}></Profiles>
+            </Card>
         </div>
-        </Card>
+        
     )
 }
 

@@ -1,5 +1,6 @@
-import Login from '../components/Profile/Login'
-import AuthLoginForm from '../components/Profile/AuthLoginForm'
+
+import Login from "../components/Profile/Login"
+import Card from "../components/UI/Card"
 
 const LoginScreen = () =>
 
@@ -7,7 +8,11 @@ const LoginScreen = () =>
 
 {
     return (
-        <AuthLoginForm/>
+        <Card className="card">
+        <Login/>
+        <p>No Account? Click the signup button above!</p>
+        </Card>
+        
     )
 }
 

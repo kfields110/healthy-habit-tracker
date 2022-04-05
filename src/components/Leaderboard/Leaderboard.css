@@ -1,4 +1,4 @@
-  @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 * > * {
     font-family: "Poppins", cursive;
@@ -19,8 +19,6 @@
 
 .board {
     text-align: center;
-    width:35%;
-    height: 30%;
 }
 
 .board .leaderboard{
@@ -82,48 +80,3 @@
 .text-dark{
     color: var(--color-dark);
 }
-
-.summary {
-  text-align: center;
-  max-width: 10rem;
-  width: 40%;
-  margin: auto;
-  margin-top: 10rem;
-  position: relative;
-  background-color: #93c572;
-  color: white;
-  border-radius: 14px;
-  padding: 1rem;
-  box-shadow: 0 1px 18px 10px rgba(0, 0, 0, 0.25);
-}
-
-.summary h2 {
-  font-size: 2rem;
-  margin-top: 0;
-}
-
-.input {
-    padding: 1rem;
-    width: 50%;
-  }
-  
-.input label {
-display: block;
-font-weight: bold;
-margin-bottom: 0.5rem;
-}
-
-.input input {
-font: inherit;
-display: block;
-width: 35%;
-border: 1px solid #ccc;
-padding: 0.15rem;
-margin-bottom: 0.5rem;
-}
-
-.input input:focus {
-outline: none;
-border-color: #4f005f;
-}
-

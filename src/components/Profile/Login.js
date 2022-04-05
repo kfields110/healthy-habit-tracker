@@ -1,101 +1,41 @@
-import {useRef, useState, useEffect} from 'react';
-import { Redirect } from 'react-router-dom';
-import './Login.css';
-import CreateAccountModal from './CreateAccountModal';
-import Button from '../UI/Button';
+import { useState } from 'react'
+import { useLogin } from '../../hooks/useLogin'
 
+// styles
+import styles from './Login.module.css'
 
-// Savann's original login Page. I made a new file called AuthLoginForm because I didn't want to mess this up when refactoring. 
-const Login = () => {
-    const userRef = useRef();
-    const errRef = useRef();
+export default function Login() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const {login, error, isPending} = useLogin();
 
-    const [user, setUser] = useState('');
-    const [password, setPassword] = useState('');
-    const [errorMessage, setError] = useState('');
-    const [login, setLogin] = useState(null);
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    login(email, password)
+  }
 
-    const [newAccount, setNewAccount] = useState('');
-
-    useEffect(() => {
-        userRef.current.focus();
-    }, []
-    )
-
-    useEffect(() => {
-        setError('');
-    }, [user,password]
-    )
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setUser('');
-        setPassword('');
-        setLogin(true);
-    }
-
-    const handleAccountSubmit = () => {
-        setNewAccount(true)
-    }
-
-    const AccountHandler = () => {
-        setNewAccount(null)
-    }
-
-    return(
-        <> 
-            {login ? (
-
-                    <Redirect to='/main'/>
-                    
-                ) : (
-
-        <section>
-            <p ref={errRef} className={errorMessage ? "errorMessage" : "offscreen"}
-            aria-live="assertive">{errorMessage}</p>
-            <div className='login-content'>
-            <form onSubmit={handleSubmit} className='form'>
-                <h2>Login:</h2>
-                <label htmlFor='username' className='login-label'>Username: </label>
-                <input 
-                    className='login-inputs'
-                    type='text' 
-                    id='username' 
-                    ref={userRef} 
-                    autoComplete='off'
-                    onChange={(e) => setUser(e.target.value)}
-                    value={user}
-                    required>
-                </input>
-
-                <label htmlFor='password' className='login-label'>Password: </label>
-                <input 
-                    className='login-inputs'
-                    type='password' 
-                    id='password' 
-                    onChange={(e) => setPassword(e.target.value)}
-                    value={password}
-                    required>
-                </input>
-
-                <Button type='submit'>Login</Button>
-
-                <p>
-                <span className='login-act-btn' type='submit'>
-                    Need to create an account?
-                    <Button onClick={handleAccountSubmit}>Click Here</Button>
-                    {newAccount && <CreateAccountModal title="Create New Account" message="Create a new Account here" onConfirm={AccountHandler} />}
-                </span>
-            </p>
-            </form>
-            </div>
-
-            
-
-        </section>
-    )}
-    </>
-    )
+  return (
+    <form onSubmit={handleSubmit} className={styles['login-form']}>
+      <h2>login</h2>
+      <label>
+        <span>email:</span>
+        <input 
+          type="email" 
+          onChange={(e) => setEmail(e.target.value)} 
+          value={email}
+        />
+      </label>
+      <label>
+        <span>password:</span>
+        <input 
+          type="password" 
+          onChange={(e) => setPassword(e.target.value)} 
+          value={password} 
+        />
+      </label>
+      {!isPending && <button className="btn">Login</button>}
+      {isPending && <button className="btn" disabled>loading</button> }
+      {error && <p>{error}</p>}
+    </form>
+  )
 }
-export default Login;
-

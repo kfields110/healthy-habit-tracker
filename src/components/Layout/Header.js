@@ -3,19 +3,16 @@ import {NavLink} from 'react-router-dom';
 import HeaderProfileButton from './HeaderProfileButton';
 import main_splash from '../../assets/Healthy_Main_Splash.jpg';
 import classes from './Header.module.css';
-import { useContext } from 'react';
-import AuthContext from '../store/auth-context';
+import { useLogout } from '../../hooks/useLogout';
 import Button from '../UI/Button';
+import { useAuthContext } from '../../hooks/useAuthContext';
 
 // This is the header/main navigation of the app. It is rendered around every component to allow for site navigation. It also tracks whether a user is logged in
 // and renders the page accordingly. 
 
 const Header = props => {
-    const authCtx = useContext(AuthContext);
-
-    const isLoggedIn = authCtx.isLoggedIn;
-
-
+  const { logout } = useLogout();
+  const {user} = useAuthContext();
 
     return (
     <Fragment>
@@ -23,14 +20,18 @@ const Header = props => {
             <h1>Healthy Habits Tracker</h1>
             <nav className={classes.nav}>
                 <ul>
-                   {isLoggedIn && (<li><NavLink to='/main' activeClassName={classes.active}>Main Screen</NavLink></li>)}
-                   {isLoggedIn &&( <li><NavLink to='/habit-log' activeClassName={classes.active}>Habit Log</NavLink></li>)}
-                   {!isLoggedIn && ( <li><NavLink to='/login' activeClassName={classes.active}>Login</NavLink></li> )} 
-                   {isLoggedIn && ( <li><Button>Logout</Button></li> )}  
+                 {user && <li><NavLink to='/main' activeClassName={classes.active}>Main Screen</NavLink></li>}
+                  {user && <li><NavLink to='/habit-log' activeClassName={classes.active}>Habit Log</NavLink></li>}
 
+                  {!user && <li><NavLink to='/login' activeClassName={classes.active}>Login</NavLink></li> }
+                   {!user && <li><NavLink to='/signup' activeClassName={classes.active}>Signup</NavLink></li> }
+                   
+                    <li><Button onClick={logout}>Logout</Button></li> 
+                    {user && <li>Hello, {user.displayName}!</li>}
                 </ul>
             </nav>
-            <NavLink to='/account' activeClassName={classes.active}><HeaderProfileButton name='Preston Garvey' /></NavLink>
+            
+            {user && <NavLink to='/account' activeClassName={classes.active}><HeaderProfileButton name={user.displayName} /></NavLink>}
             
         </header>
         <div className={classes['main-image']}>
