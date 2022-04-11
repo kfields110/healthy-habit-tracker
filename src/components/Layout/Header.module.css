@@ -2,7 +2,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 90%;
     height: 5rem;
     background-color: #8a2b06;
     color: white;
@@ -12,6 +12,7 @@
     padding: 0 10%;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     z-index: 10;
+    margin-right: 10rem;
   }
 
   .header ul {
@@ -40,10 +41,10 @@
     transform: rotateZ(-5deg) translateY(-4rem) translateX(-1rem);
   }
 
-  /* .nav ul {
+  .nav ul {
     list-style: none;
     display: flex;
-    margin: 0;
+    margin: 5;
     padding: 0;
     align-items: center;
   }
@@ -52,7 +53,7 @@
     margin-left: 1.5rem;
     font-size: 1.25rem;
     align-items: center;
-  } */
+  }
   
   .nav a {
     text-decoration: none;

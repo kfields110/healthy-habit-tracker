@@ -19,7 +19,7 @@ const EatingHabits = () => {
     useEffect(() => {
         setIsPending(true)
 
-        projectFirestore.collection('eating-habits').get().then((snapshot) => {
+        projectFirestore.collection('habits').where("Type","==",'eating').get().then((snapshot) => {
             if(snapshot.empty){
                 setError('No Habits Loaded')
                 setIsPending(false);

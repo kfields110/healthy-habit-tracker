@@ -13,7 +13,9 @@ const goal3 = 200; //steps
 
 function GoalCompletionSection(props) {
   return (
-    <Card className="card">
+    <Card className="card
+    
+    ">
       <h1>Daily Goals</h1>
       <div className="card" >
         <h3>{props.title}</h3>

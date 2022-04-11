@@ -11,12 +11,13 @@ const MainScreen = () => {
     <Fragment id="content">
      
       <Overview />
-      <div classname='div1'>
+      <div classname='container'>
+      <Leaderboard classname='div1' />
+      
       <GoalCompletionSection />
       </div>
-      <div className='div2'>
-      <Leaderboard />
-      </div>
+      
+      
     
     </Fragment>
   );

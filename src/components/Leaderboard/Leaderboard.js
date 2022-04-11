@@ -15,7 +15,7 @@ const Leaderboard = () => {
     }
     return (
         
-        <div className="board">
+        <div >
             <Card >
             <h1 className="leaderboard">Leader Board</h1>
 

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import AccountScreen from "./pages/account_screen";
@@ -6,34 +6,46 @@ import HabitLog from "./pages/habit_log";
 import MainScreen from "./pages/Main_screen";
 import Layout from "./components/Layout/Layout";
 import LoginScreen from "./pages/login_screen";
-import { AuthContext } from "./components/store/AuthContext";
+import AddHabit from "./components/HabitLog/AddHabit";
 import SignupScreen from "./pages/Signup_screen";
+import {useAuthContext} from './hooks/useAuthContext'
+
 
 function App() {
-  const authCtx = useContext(AuthContext);
+  const { authIsReady, user} = useAuthContext();
 
   return (
     <Layout>
+      {authIsReady && (
       <Switch>
         <Route path="/main">
-          <MainScreen />
+          {!user && <Redirect to="/login"/>}
+          {user && <MainScreen />}
         </Route>
         <Route path="/account">
-          <AccountScreen />
+          {user && <AccountScreen />}
+          {!user && <Redirect to="/login"/>}
         </Route>
         <Route path="/habit-log">
-          <HabitLog />
+          {user && <HabitLog />}
+          {!user && <Redirect to="/login"/>}
         </Route>
         <Route path="/login">
-         <LoginScreen />
+         {!user && <LoginScreen />}
+         {user && <Redirect to="/main"/>}
         </Route>
         <Route path="/signup">
-          <SignupScreen/>
+          {!user && <SignupScreen/>}
+          {user && <Redirect to="/main"/>}
+        </Route>
+        <Route path="/:id">
+          {user && <AddHabit uid={user.uid}/>}
+          {!user && <LoginScreen />}
         </Route>
         <Route path='*'>
-          <Redirect to='/'/>
+          <Redirect to='/main'/>
         </Route>
-      </Switch>
+      </Switch>)}
     </Layout>
   );
 }
