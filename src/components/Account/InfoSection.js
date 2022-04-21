@@ -5,6 +5,11 @@ import Backdrop from "./Backdrop";
 
 function InfoSection(props) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [data, setData] = useState("");
+
+  const modalToInfoSection = (modalData) => {
+    setData(modalData);
+  };
 
   function editInfoHandler() {
     setModalIsOpen(true);
@@ -18,11 +23,16 @@ function InfoSection(props) {
     <div>
       <div className="card">
         <h3>{props.title}</h3>
-        <div className="line-break">
-          <ul>
+        <div>
+          <ul >
+            {data}
             {props.info.map((info) => {
-            return <li key={info.id}>{info.label} {info.content}</li>
-          })}
+              return (
+                <li key={info.id}>
+                  {info.label} {info.content} {data}
+                </li>
+              );
+            })}
           </ul>
         </div>
         <div className="actions">
@@ -33,7 +43,12 @@ function InfoSection(props) {
         </div>
 
         {modalIsOpen && (
-          <EditingModal onCancel={closeModalHandler} onSave={closeModalHandler} info={props.info}/>
+          <EditingModal
+            onCancel={closeModalHandler}
+            onSave={closeModalHandler}
+            info={props.info}
+            modalToInfoSection={modalToInfoSection}
+          />
         )}
         {modalIsOpen && <Backdrop onCancel={closeModalHandler} />}
       </div>

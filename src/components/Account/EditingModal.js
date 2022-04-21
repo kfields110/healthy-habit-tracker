@@ -1,12 +1,17 @@
-import React from "react";
+import React, {useRef} from "react";
 
 function Modal(props) {
+  const infoInputRef = useRef();
+  var data = "from Modal to Info section";
+
   function saveHandler() {
-    props.onCancel();
+    data = infoInputRef.current.value;
+    props.modalToInfoSection(data);
+    props.onSave();
   }
 
   function cancelHandler() {
-    props.onSave();
+    props.onCancel();
   }
 
   return (
@@ -18,7 +23,11 @@ function Modal(props) {
             return (
               <li key={info.id}>
                 {info.label}
-                <input type="text" name="country" id="country" value={info.content}/> 
+                <input
+                  type="text"
+                  ref={infoInputRef}
+                  defaultValue={info.content}
+                />
               </li>
             );
           })}
