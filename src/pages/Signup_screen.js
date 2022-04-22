@@ -8,7 +8,7 @@ const SignupScreen = () =>
 
 {
     return ( 
-        <Card className="card">
+        <Card className="auth-form" >
         <Signup/>
         </Card>
     )

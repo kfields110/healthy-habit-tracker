@@ -3,7 +3,7 @@ import { useCollection } from "../hooks/useCollection";
 import Overview from "../components/MainScreen/Overview";
 import Leaderboard from "../components/Leaderboard/Leaderboard";
 import './Main_screen.css';
-import GoalCompletionSection from "../components/MainScreen/GoalCompletionSection";
+import GoalCompletionSection from "../components/Account/GoalCompletionSection";
 import UserHabits from "../components/MainScreen/UserHabits";
 import { useAuthContext } from "../hooks/useAuthContext";
 
@@ -16,16 +16,17 @@ const MainScreen = () => {
 
 
   return (
-    <Fragment >
+    <Fragment className="container" >
      
       <Overview />
-      <div classname='container'>
-
+      <div >
+    
+      <GoalCompletionSection title="Daily Goals" />
       {error && <p>{error}</p>}
       {documents && <UserHabits habits={documents}/>}  
       <Leaderboard classname='div1' />
       
-      <GoalCompletionSection />
+      
       </div>
       
       

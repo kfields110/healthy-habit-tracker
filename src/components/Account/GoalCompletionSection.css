@@ -9,3 +9,10 @@
     width: 200;
     height: 200;
 }
+
+.card {
+    margin-bottom: auto;
+    width:auto;
+    height: 350px;
+    float: right;
+}

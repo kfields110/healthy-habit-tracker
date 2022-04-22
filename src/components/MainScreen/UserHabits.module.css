@@ -12,6 +12,7 @@
   .habits .name {
     color: #777;
     font-size: 1.4em;
+    margin: 10px;
   }
   .habits .amount {
     margin-left: auto;
@@ -32,4 +33,9 @@
     line-height: 0;
     font-size: 0.9em;
     cursor: pointer;
+  }
+
+  .card {
+    float:left;
+    margin-right: 25px;
   }

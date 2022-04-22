@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Card from "../UI/Card";
 import classes from "./AddHabit.module.css";
-import Button from "../UI/Button";
+
 import ErrorModal from "../UI/ErrorModal";
 import { projectFirestore } from "../../firebase/config";
-import { useParams } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 import { useFirestore } from "../../hooks/useFirestore";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import { useDocument } from "../../hooks/useDocument";
 
 // This is a resuable component the allows users to add habits. It accepts parameters of unique habit types that can than be
 // rendered on the app.
@@ -15,8 +17,10 @@ const AddHabit = ({ uid }) => {
   const [habit, setHabit] = useState(null);
   const { addDocument, response } = useFirestore("user-submitted-habit");
   const { id } = useParams();
-
-  const [data, setData] = useState(null);
+  const {updateDocument, docResponse} = useFirestore('users')
+  const {user} = useAuthContext()
+  const {doc_error, document} = useDocument('users', user.uid)
+  const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
     projectFirestore
@@ -35,15 +39,10 @@ const AddHabit = ({ uid }) => {
       });
   }, [id]);
 
-  const AddHabitHandler = (event) => {
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // if (enteredHabit.trim().length === 0 || enteredAmount.trim() === 0) {
-    //   setError({
-    //     title: "Invalid Habit",
-    //     message: "Please enter a valid Habit (non empty and non negative)",
-    //   });
-    //   return;
-    // }
+    
     if (+amount < 1) {
       setError({
         title: "Invalid Amount",
@@ -51,29 +50,53 @@ const AddHabit = ({ uid }) => {
       });
       return;
     }
-    // setHabit("");
-    setAmount("");
-  };
 
-  const addHabitHandler = (event) => {
-    setHabit(event.target.value);
-  };
-
-  const addAmountHandler = (event) => {
-    setAmount(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    addDocument({
+    {!error && addDocument({
       uid,
       habit,
       amount,
     });
+    if (habit.Type === 'exercise'){
+      let total = Number(document['exercisePoints']) + Number(amount);
+    
+      await updateDocument(user.uid,
+        {exercisePoints: total.toString()
+        }
+      )
+    }
+    if (habit.Type === 'mental'){
+      let total = Number(document['mentalPoints']) + Number(amount);
+    
+      await updateDocument(user.uid,
+        {mentalPoints: total.toString()
+        }
+      )
+    }
+    if (habit.Type === 'eating'){
+      let total = Number(document['eatingPoints']) + Number(amount);
+    
+      await updateDocument(user.uid,
+        {eatingPoints: total.toString()
+        }
+      )
+    }
+
+   
+    let totalPoints = Number(document['totalPoints'])+ Number(amount);
+    await updateDocument(user.uid, {totalPoints: totalPoints.toString()})
+
+    // setHabit("");
+    setAmount("");}
+    
+    if(!error){
+    setRedirect(true)
+    }
+  
   };
 
   useEffect(() => {
     if (response.success) {
+      
       setAmount(null);
     }
   }, [response.success]);
@@ -84,6 +107,7 @@ const AddHabit = ({ uid }) => {
 
   return (
     <div>
+      { redirect ? (<Redirect push to="/habit-log"/>) : null }
       {error && (
         <ErrorModal
           title={error.title}

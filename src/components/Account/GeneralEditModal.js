@@ -1,17 +1,24 @@
 import React, { useRef } from "react";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import {useFirestore} from '../../hooks/useFirestore'
 
 function GeneralEditModal(props) {
+  const {user} = useAuthContext()
   const firstNameRef = useRef();
   const lastNameRef = useRef();
   const emailInfoRef = useRef();
 
-  function saveHandler(event) {
+  const {updateDocument, response} = useFirestore('users')
+  
+  const saveHandler = async (event) => {
     event.preventDefault();
-    props.modalToInfoSection(
-      firstNameRef.current.value,
-      lastNameRef.current.value,
-      emailInfoRef.current.value
-    );
+   
+    await updateDocument(user.uid,
+      {firstName: firstNameRef.current.value,
+       lastName: lastNameRef.current.value,
+       email: emailInfoRef.current.value
+      }
+    )
     props.onSave();
   }
 
@@ -19,7 +26,7 @@ function GeneralEditModal(props) {
     event.preventDefault();
     props.onCancel();
   }
-
+  
   return (
     <div className="modal">
       <p>Editing Mode</p>

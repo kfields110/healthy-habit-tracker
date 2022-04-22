@@ -2,26 +2,17 @@ import { useState } from "react";
 import React from "react";
 import MeasurementEditModal from "./MeasurementEditModal";
 import Backdrop from "./Backdrop";
+import {useCollection} from '../../hooks/useCollection'
+import { useAuthContext } from "../../hooks/useAuthContext";
+import {useDocument} from "../../hooks/useDocument"
 
-const measurementInfo = [
-  {
-    id: "m1",
-    label: "Height: ",
-    content: "6'1",
-  },
-  {
-    id: "m2",
-    label: "Weight: ",
-    content: "200 lbs",
-  },
-  {
-    id: "m3",
-    label: "Age: ",
-    content: "33",
-  },
-];
+
 
 function MeasurementInfoSection() {
+  const {user} = useAuthContext()
+  console.log(user.uid)
+  const {error, document} = useDocument('users', user.uid)
+
   const [editMeasurementIsOpen, setEditMIsOpen] = useState(false);
   //const [height, setHeight] = useState(measurementInfo[0].content);
   //const [weight, setWeight] = useState(measurementInfo[1].content);
@@ -42,6 +33,36 @@ function MeasurementInfoSection() {
   function closeMeasurementHandler() {
     setEditMIsOpen(false);
   }
+
+  
+  
+
+ 
+  if(error){
+    return <div>error</div>
+
+  }
+  if(!document) {
+    return <div>Loading...</div>
+  }
+
+  const measurementInfo = [
+    {
+      id: "m1",
+      label: "Height: ",
+      content: document.height,
+    },
+    {
+      id: "m2",
+      label: "Weight: ",
+      content: document.weight,
+    },
+    {
+      id: "m3",
+      label: "Age: ",
+      content: document.age,
+    },
+  ];
 
   return (
     <div>

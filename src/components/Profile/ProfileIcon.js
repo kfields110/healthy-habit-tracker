@@ -20,9 +20,9 @@ const ProfileIcon = () => {
         </clipPath>
       </defs>
       
-      <circle cx="300" cy="300" r="280" fill="black" clip-path="url(#avoid-antialiasing-bugs)" />
+      <circle cx="300" cy="300" r="280" fill="black" clipPath="url(#avoid-antialiasing-bugs)" />
       <circle cx="300" cy="230" r="115" />
-      <circle cx="300" cy="550" r="205" clip-path="url(#circular-border)" />
+      <circle cx="300" cy="550" r="205" clipPath="url(#circular-border)" />
     </svg>
     )
 }

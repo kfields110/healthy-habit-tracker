@@ -1,54 +1,105 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {
   CircularProgressbar,
   buildStyles,
 } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import "./GoalCompletionSection.css"
+import "./GoalCompletionSection.css";
+import { projectFirestore } from "../../firebase/config";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import Card from "../UI/Card";
 
-const goal1 = 50; //calories burned
-const goal2 = 1; //healthy meals
-const goal3 = 200; //steps
+
 
 function GoalCompletionSection(props) {
+  const {user} = useAuthContext()
+  const [document, setDocuments] = useState(null);
+const startOfDay = new Date();
+startOfDay.setUTCHours(0,0,0,0)
+
+useEffect(() => {const unsubscribe = projectFirestore.collection('user-submitted-habit').where('uid', '==', user.uid).where('createdAt', '>=', startOfDay).onSnapshot((snapshot) => {
+  let results = []
+  snapshot.docs.forEach(doc => {
+      results.push({...doc.data(), id: doc.id})
+  })
+
+  setDocuments(results)
+ 
+}, (error) => {
+  console.log(error)
+ 
+})
+return () => unsubscribe()
+}, [])
+
+let dailyEating = 0; //calories burned
+let dailyMental = 0; //healthy meals
+let dailyExercise = 0; //steps
+
+const maxEating = 75;
+const maxMental = 50;
+const maxExercise = 100;
+
+{document && document.forEach(doc => {
+    
+
+    if(doc.habit['Type']==='exercise'){
+      dailyExercise += (doc.amount * Number(doc.habit['Points']));
+    }
+
+    if(doc.habit['Type']==='eating'){
+      dailyEating += (doc.amount * Number(doc.habit['Points']));
+    }
+
+    if(doc.habit['Type']==='mental'){
+      dailyMental += (doc.amount * Number(doc.habit['Points']));
+    }
+})
+}
+
   return (
     <div>
       <div className="card" >
-        <h3>{props.title}</h3>
+        <h1>{props.title}</h1>
+        <h4>This shows your progress toward your daily goals! Keep adding healthy habits!</h4>
         <ul className="goal-circle">
-          <li style={{ width: 200, height: 200 }}>
+          <li style={{ width: 250, height: 200}}>
             <CircularProgressbar
-              value={goal1}
-              maxValue={200}
-              text={`${goal1} cal`}
+              value={dailyEating}
+              maxValue={maxEating}
+              text={`${dailyEating}/${maxEating} Eating `}
               styles={buildStyles({
                 textColor: "black",
                 pathColor: "green",
                 trailColor: "red",
+                textSize: '9px'
               })}
             />
           </li>
-          <li style={{ width: 200, height: 200 }}>
+          <li style={{ width: 250, height: 200 }}>
             <CircularProgressbar
-              value={goal2}
-              maxValue={3}
-              text={`${goal2} meals`}
+              value={dailyMental}
+              maxValue={50}
+              text={`${dailyMental}/${maxMental} Mental `}
+             
               styles={buildStyles({
                 textColor: "black",
                 pathColor: "green",
                 trailColor: "red",
+                textSize: '9px'
               })}
             />
           </li>
-          <li style={{ width: 200, height: 200 }}>
+          <li style={{ width: 250, height: 200 }}>
             <CircularProgressbar
-              value={goal3}
-              maxValue={1000}
-              text={`${goal3} steps`}
+              value={dailyExercise}
+              maxValue={100}
+              text={`${dailyExercise}/${maxExercise} Exercise`}
               styles={buildStyles({
                 textColor: "black",
                 pathColor: "green",
                 trailColor: "red",
+                textSize: "9px"
               })}
             />
           </li>

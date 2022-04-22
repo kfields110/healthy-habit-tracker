@@ -4,9 +4,13 @@ import "./AccountPage.css";
 import GeneralInfoSection from "./GeneralInfoSection";
 import MeasurementInfoSection from "./MeasurementInfoSection";
 import GoalCompletionSection from "./GoalCompletionSection";
-import AddressInfoSection from "./AddressInfoSection";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import UserPoints from "./UserPoints";
 
 function AccountPage() {
+
+  const {user} = useAuthContext()
+
   return (
     <div>
       <header className="account-header">
@@ -20,7 +24,7 @@ function AccountPage() {
               backgroundSize: "auto 80px",
             }}
             className="profileP"
-            src={profilepic}
+            src={user.photoURL}
             alt=""
           />
         }
@@ -38,7 +42,7 @@ function AccountPage() {
         </li>
         {/* Requirement 1.3.0 */}
         <li>
-          <AddressInfoSection />
+          <UserPoints />
         </li>
         <li>
           <GoalCompletionSection title="Daily Goal Completion" />

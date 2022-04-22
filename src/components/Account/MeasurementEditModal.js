@@ -1,17 +1,24 @@
 import React, { useRef } from "react";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import {useFirestore} from '../../hooks/useFirestore'
 
 function MeasurementEditModal(props) {
+  const {user} = useAuthContext()
   const heightRef = useRef();
   const weightRef = useRef();
   const ageRef = useRef();
 
-  function saveHandler(event) {
+  const {updateDocument, response} = useFirestore('users')
+
+  const saveHandler = async (event) => {
     event.preventDefault();
-    props.modalToInfoSection(
-      heightRef.current.value,
-      weightRef.current.value,
-      ageRef.current.value
-    );
+   
+    await updateDocument(user.uid,
+      {height: heightRef.current.value,
+       weight:weightRef.current.value,
+       age: ageRef.current.value}
+    )
+    
     props.onSave();
   }
 

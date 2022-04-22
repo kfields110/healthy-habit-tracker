@@ -1,4 +1,4 @@
-.div1 {
+/* .div1 {
     width:50%;
     float:left;
 }
@@ -6,11 +6,10 @@
 .div2 {
     width:50%;
     float:right;
-}
+} */
 
 .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    grid-auto-rows: minmax(100px, auto);
+    display: flex;
+    flex-grow: 1;
+    padding: 0 60px;
 }

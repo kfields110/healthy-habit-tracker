@@ -27,7 +27,7 @@ export default function HabitList ({habits}) {
         <div className="habit-list">
             {habits.map(habit => (
                 
-                <div key={habit.id} className="card">
+                <div key={habit.id} className="habitcard">
                     <h3>{habit.Title}</h3>
                     <p>{habit.Description}</p>
                     <h4>Habit Type: {habit.Type}</h4>
