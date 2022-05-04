@@ -1,0 +1,113 @@
+
+.account-header {
+   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: rgb(0, 0, 0);
+  }
+
+  .account-link {
+    color: #276374;
+  }
+
+  .profileP{
+    max-width: 300px;
+    margin-top: 1rem; 
+    align-items: center;
+    justify-content: center;
+  }  
+
+  ul.account {
+    padding-left: 0px;
+    align-items:center;
+  }
+  
+  ul.account > li {
+    display: inline-block;
+    padding: 5px 5px;
+    vertical-align: top;
+  }
+
+  
+.btn {
+  font: inherit;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: #01683d;
+  color: white;
+  border: 1px solid #01683d;
+  margin: 0 1rem;
+}
+
+.btn:hover {
+  background-color: #088853;
+  border-color: #088853;
+}
+
+.btn--alt {
+  background-color: transparent;
+  color: #800040;
+}
+
+.btn--alt:hover {
+  background-color: #f8dae9;
+}
+
+.card {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  min-width: 25rem;
+  margin-top: 1rem; /* 4px */
+  vertical-align: top;
+}
+
+.actions {
+  text-align: right;
+}
+
+.modal {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  background-color: white;
+  padding: 1rem;
+  text-align: center;
+  width: 30rem;
+  z-index: 10;
+  position: fixed;
+  top: 20vh;
+  left: calc(50% - 15rem);
+}
+
+.modal-body{
+  white-space: pre-line;
+  margin-left: 1rem;
+  text-align: left;
+}
+
+.backdrop {
+  position: fixed;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.50);
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+.profileP{
+  max-width: 300px;
+  margin-top: 1rem; 
+  align-items: center;
+  justify-content: center;
+}
+
+.line-break {
+  white-space: pre-line;
+}
+  

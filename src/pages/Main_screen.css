@@ -1,0 +1,23 @@
+.div1 {
+    width:50%;
+    float:left;
+    margin-bottom: 15px;
+}
+
+.div2 {
+    width:33%;
+    float: right;
+    margin-top: 15px;
+}
+
+.div3{
+    width: 50%;
+    margin-left: 50px;
+}
+
+.container {
+    display: grid;
+    position: relative;
+  
+}
+
