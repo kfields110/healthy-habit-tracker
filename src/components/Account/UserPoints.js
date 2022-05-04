@@ -50,7 +50,8 @@ function UserPoints() {
         <h3>Points Info</h3>
         <div className="line-break">
           <ul>
-            {pointsInfo.map((info) => {
+            
+            {document && pointsInfo.map((info) => {
               return (
                 <li key={info.id}>
                   {info.label} {info.content}

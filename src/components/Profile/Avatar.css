@@ -1,9 +1,13 @@
 .avatar {
-    display: inline-block;
     width: 50px;
     height: 50px;
     border-radius: 50%;
     overflow: hidden;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-45%);
+    float: left;
     
   }
   .avatar img {

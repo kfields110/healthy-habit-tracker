@@ -3,6 +3,8 @@
  import 'firebase/auth';
  import 'firebase/storage'
 
+ //Requirement 7.0.0
+
  const firebaseConfig = {
    apiKey: "AIzaSyDjyTcq3Y7uenkFWKypKn8rUDGJeQKqyUI",
    authDomain: "healthy-habit-tracker-1f519.firebaseapp.com",

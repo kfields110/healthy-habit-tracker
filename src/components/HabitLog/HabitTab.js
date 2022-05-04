@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 // This component is to have tab navigation between the habit types to allow users
 // to easily switch between which habit type would like to input.
 
+//Requirement 2.2.0
+
 class Tab extends Component {
   static propTypes = {
     activeTab: PropTypes.string.isRequired,

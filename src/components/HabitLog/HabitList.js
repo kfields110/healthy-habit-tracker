@@ -5,6 +5,9 @@ import { useState } from 'react';
 import { projectFirestore } from '../../firebase/config';
 import { NavLink } from 'react-router-dom';
 
+
+//This component is responsible for dynamically rendering each habit in the Firestore database
+
 export default function HabitList ({habits}) {
     
     const [enteredHabit, setHabit] = useState(null);
@@ -30,7 +33,6 @@ export default function HabitList ({habits}) {
                 <div key={habit.id} className="habitcard">
                     <h3>{habit.Title}</h3>
                     <p>{habit.Description}</p>
-                    <h4>Habit Type: {habit.Type}</h4>
                     <NavLink to={`/${habit.id}`}>Click here to add!</NavLink>
                 </div>
             ))}

@@ -13,23 +13,31 @@ const MainScreen = () => {
   const {documents, error} = useCollection('user-submitted-habit',
     ["uid","==",user.uid]
   )
-
-
+  //Sort in descending order
+  {documents &&documents.sort((a,b) => (a.createdAt < b.createdAt) ? 1 : -1)} 
+  
   return (
-    <Fragment className="container" >
+    <Fragment >
      
       <Overview />
       <div >
-    
-      <GoalCompletionSection title="Daily Goals" />
+      <div className="div1">
+      <GoalCompletionSection  title="Daily Goals" />
       {error && <p>{error}</p>}
-      {documents && <UserHabits habits={documents}/>}  
-      <Leaderboard classname='div1' />
-      
-      
       </div>
+      <div className="div2">
+      <Leaderboard  />
+      </div>
+    
+      
+     
+     
+      </div>
+      <div className="div3">
       
       
+      {documents && <UserHabits habits={documents}/>}   
+      </div>
     
     </Fragment>
   );

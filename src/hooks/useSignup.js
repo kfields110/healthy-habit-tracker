@@ -2,6 +2,9 @@ import { useState } from 'react'
 import { projectAuth, projectFirestore, projectStorage } from '../firebase/config'
 import { useAuthContext } from './useAuthContext'
 
+//Component to allow a user to create an account and save it to the Firestore
+// Requirement 8.2.0
+
 export const useSignup = () => {
   const [error, setError] = useState(null)
   const [isPending, setIsPending] = useState(false)

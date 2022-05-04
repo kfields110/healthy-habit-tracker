@@ -10,7 +10,8 @@ import AddHabit from "./components/HabitLog/AddHabit";
 import SignupScreen from "./pages/Signup_screen";
 import {useAuthContext} from './hooks/useAuthContext'
 
-
+//This is the main app component which renders everything seen on screen
+// The use authcontext wraps the entire project which enables the user to access screens only available if logged in. 
 function App() {
   const { authIsReady, user} = useAuthContext();
 

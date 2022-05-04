@@ -7,8 +7,11 @@ import { useLogout } from "../../hooks/useLogout";
 import Button from "../UI/Button";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
-// This is the header/main navigation of the app. It is rendered around every component to allow for site navigation. It also tracks whether a user is logged in
-// and renders the page accordingly.
+// This is the header/main navigation of the app. It is rendered around every component to allow for site navigation. It also tracks whether a user is logged in with 
+// the 'useAuthContext' hook and renders the page accordingly.
+
+// Requirement 3.0.0
+//Requirements 3.0.1 -> 3.0.5 in the return block
 
 const Header = (props) => {
   const { logout } = useLogout();

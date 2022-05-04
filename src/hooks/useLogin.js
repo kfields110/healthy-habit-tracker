@@ -2,6 +2,10 @@ import { useState, useEffect } from 'react'
 import { projectAuth } from '../firebase/config'
 import { useAuthContext } from './useAuthContext'
 
+
+//Component that accesses Firbase and enables a user to login with email and password
+// Requirements 8.2.0
+
 export const useLogin = () => {
   const [isCancelled, setIsCancelled] = useState(false)
   const [error, setError] = useState(null)

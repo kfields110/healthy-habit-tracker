@@ -4,6 +4,9 @@ import { useLogin } from '../../hooks/useLogin'
 // styles
 import styles from './Login.module.css'
 
+
+//Requirement 6.2.0
+
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')

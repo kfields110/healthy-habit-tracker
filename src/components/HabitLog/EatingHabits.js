@@ -4,7 +4,7 @@ import { projectFirestore } from "../../firebase/config";
 import HabitList from "./HabitList";
 
 
-
+//Requirement 2.2.1
 // The component responsible for displaying all eating habits.
 const EatingHabits = () => {
     const [habits, setHabits] = useState([]);

@@ -1,15 +1,15 @@
 import React from 'react'
 import { useCollection } from '../../hooks/useCollection'
 
-export default function profiles({ Leaderboard }) {
+export default function profiles({ Leaderboard, type }) {
   return (
         <div id="profile">
-            {Item(Leaderboard)}
+            {Item(Leaderboard, type)}
         </div>
   )
 }
 
-function Item(data){
+function Item(data, type){
     return (
 
         <>
@@ -25,7 +25,12 @@ function Item(data){
                             </div>                
                         </div>
                         <div className="item">
-                            <span>{value.totalPoints}</span>
+                            <span>
+                            {type== "totalPoints" && Math.round(value.totalPoints)} 
+                            {type== "mentalPoints" && Math.round(value.mentalPoints)}  
+                            {type== "exercisePoints" && Math.round(value.exercisePoints)}
+                            {type== "eatingPoints" && Math.round(value.eatingPoints)}  
+                            </span>
                         </div>
                     </div>
                     )

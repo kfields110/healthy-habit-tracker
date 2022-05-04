@@ -6,11 +6,10 @@ import {useCollection} from '../../hooks/useCollection'
 import { useAuthContext } from "../../hooks/useAuthContext";
 import {useDocument} from "../../hooks/useDocument"
 
-
+//function that connects to firebase documents. Allows users to input information about themselves. 
 
 function MeasurementInfoSection() {
   const {user} = useAuthContext()
-  console.log(user.uid)
   const {error, document} = useDocument('users', user.uid)
 
   const [editMeasurementIsOpen, setEditMIsOpen] = useState(false);

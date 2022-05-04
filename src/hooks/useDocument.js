@@ -1,6 +1,9 @@
 import {useEffect, useState} from 'react'
 import { projectFirestore } from '../firebase/config'
 
+//Hook to access specific documents in a collection
+//Requirement 8.1.0
+
 export const useDocument = (collection, id) => {
     const [document, setDocuments] = useState(null);
     const [error, setError] = useState(null);

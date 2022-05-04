@@ -9,6 +9,7 @@ import { projectFirestore } from "../../firebase/config";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import Card from "../UI/Card";
 
+//This component displays the amount of points each user earned toward their daily goals
 
 
 function GoalCompletionSection(props) {
@@ -36,6 +37,7 @@ let dailyEating = 0; //calories burned
 let dailyMental = 0; //healthy meals
 let dailyExercise = 0; //steps
 
+//Setting the suggested daily amount to achieve. Numbers are pretty high. 
 const maxEating = 75;
 const maxMental = 50;
 const maxExercise = 100;
@@ -44,21 +46,20 @@ const maxExercise = 100;
     
 
     if(doc.habit['Type']==='exercise'){
-      dailyExercise += (doc.amount * Number(doc.habit['Points']));
+      dailyExercise += Math.round((doc.amount * Number(doc.habit['Points'])));
     }
 
     if(doc.habit['Type']==='eating'){
-      dailyEating += (doc.amount * Number(doc.habit['Points']));
+      dailyEating += Math.round((doc.amount * Number(doc.habit['Points'])));
     }
 
     if(doc.habit['Type']==='mental'){
-      dailyMental += (doc.amount * Number(doc.habit['Points']));
+      dailyMental += Math.round((doc.amount * Number(doc.habit['Points'])));
     }
 })
 }
 
   return (
-    <div>
       <div className="card" >
         <h1>{props.title}</h1>
         <h4>This shows your progress toward your daily goals! Keep adding healthy habits!</h4>
@@ -105,7 +106,7 @@ const maxExercise = 100;
           </li>
         </ul>
       </div>
-    </div>
+    
   );
 }
 

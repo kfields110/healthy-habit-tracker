@@ -7,26 +7,31 @@ import { useCollection } from '../../hooks/useCollection';
 import LeaderboardUsers from './LeaderboardUsers';
 
 
-// This is the Leaderboard which will display user data from the past week, month, and all time.
+// This is the Leaderboard which will display user data.
+//Requirement 4.0.0
 const Leaderboard = () => {
 
-    const [period, setPeriod] = useState(0);
+    const [period, setPeriod] = useState('totalPoints');
+    //Requirement 4.1.0
     const {error, documents} = useCollection('users')
-    console.log(documents)
+
 
     const handleClick = (props) => {
-        setPeriod(props.target.dataset.id)
+        setPeriod(props.target.dataset.id) 
+  
     }
     return (
         
         <div >
-            <Card className="card">
+            <Card className="leader_card">
             <h1 className="leaderboard">Leader Board</h1>
+            <h4>Here are the healthiest people!</h4>
 
             <div className='duration'>
-                <button onClick={handleClick} data-id='7'>7 Days</button>
-                <button onClick={handleClick} data-id='30'>30 Days</button>
-                <button onClick={handleClick} data-id='0'>All Time</button>
+                <button onClick={handleClick} data-id='eatingPoints'>Eating Leaders</button>
+                <button onClick={handleClick} data-id='mentalPoints'>Mental Leaders</button>
+                <button onClick={handleClick} data-id='exercisePoints'>Exercise Leaders</button>
+                <button onClick={handleClick} data-id='totalPoints'>Total Leaders</button>
             </div>
             {/* {documents && documents.map(user => {
                 <div key={user.id}>
@@ -35,32 +40,65 @@ const Leaderboard = () => {
                 </div>
             })} */}
             {/* <LeaderboardUsers/> */}
-           {documents && <Profiles Leaderboard={between(documents, period)}></Profiles>}
+           {documents && <Profiles Leaderboard={between(documents.slice(0,9), period)} type={period}></Profiles>}
             </Card>
         </div>
         
     )
 }
-
-function between(data, between){
-    const today = new Date();
-    const previous = new Date(today);
-    previous.setDate(previous.getDate() - (between + 1));
-
-    // let filter = data.filter(val => {
-    //     let userDate = new Date(val.dt);
-    //     if (between === 0) return val;
-    //     return previous <= userDate && today >= userDate;
-    // })
+// Requirement 4.3.0 
+//This will sort the data based on what the user selects 
+function between(data, period){
 
     // sort with asending order
+    if (period == "totalPoints"){
     return data.sort((a, b) => {
+    
         if ( a.totalPoints === b.totalPoints){
-            return b.totalPoints - a.totalPoints;
+            return Math.round(b.totalPoints - a.totalPoints);
         } else{
-            return b.totalPoints - a.totalPoints;
+            return Math.round( b.totalPoints - a.totalPoints);
         }
+    
+ 
     })
+    }
+    if (period == "mentalPoints"){
+        return data.sort((a, b) => {
+        
+            if ( a.mentalPoints === b.mentalPoints){
+                return Math.round(b.mentalPoints - a.mentalPoints);
+            } else{
+                return Math.round( b.mentalPoints - a.mentalPoints);
+            }
+        
+     
+        })
+        }
+    if (period == "eatingPoints"){
+        return data.sort((a, b) => {
+        
+            if ( a.eatingPoints === b.eatingPoints){
+                return Math.round(b.eatingPoints - a.eatingPoints);
+            } else{
+                return Math.round( b.eatingPoints - a.eatingPoints);
+            }
+        
+        
+        })
+        }
+    if (period == "exercisePoints"){
+        return data.sort((a, b) => {
+        
+            if ( a.exercisePoints === b.exercisePoints){
+                return Math.round(b.exercisePoints - a.exercisePoints);
+            } else{
+                return Math.round( b.exercisePoints - a.exercisePoints);
+            }
+        
+        
+        })
+        }
 }
 
 export default Leaderboard;

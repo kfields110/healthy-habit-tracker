@@ -4,6 +4,8 @@ import Avatar from '../Profile/Avatar'
 
 import './LeaderboardUsers.css'
 
+//Requirement 4.2.0
+
 export default function LeaderboardUsers(){
     const {error, documents} = useCollection('users')
 

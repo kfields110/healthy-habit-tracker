@@ -2,6 +2,9 @@ import { useState } from 'react'
 import { projectAuth } from '../firebase/config'
 import { useAuthContext } from './useAuthContext'
 
+//Component that allows a user to logout
+// Requirement 8.2.0
+
 export const useLogout = () => {
   const [error, setError] = useState(null)
   const [isPending, setIsPending] = useState(false)

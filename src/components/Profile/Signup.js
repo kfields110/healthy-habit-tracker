@@ -70,6 +70,7 @@ export default function Signup() {
       <label>
         <span>Profile Thumbnail:</span>
         <input 
+          required
           type="file" 
           onChange={handleFileChange}
         />

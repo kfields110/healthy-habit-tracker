@@ -2,6 +2,9 @@ import { useReducer, useEffect, useState } from "react";
 import { projectFirestore, timestamp } from "../firebase/config";
 
 
+//This component enables interactivity with firebase
+//Requirement 8.1.0
+
 let initialState = {
     document:null,
     isPending: false,

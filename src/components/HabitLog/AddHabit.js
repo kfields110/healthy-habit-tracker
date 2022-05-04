@@ -11,6 +11,11 @@ import { useDocument } from "../../hooks/useDocument";
 
 // This is a resuable component the allows users to add habits. It accepts parameters of unique habit types that can than be
 // rendered on the app.
+
+ // Requirement 2.0.1
+ //useEffect hook that runs each time a user selects a new habit to enter. Then updates users information based on the amount they entered.
+
+ 
 const AddHabit = ({ uid }) => {
   const [amount, setAmount] = useState("");
   const [error, setError] = useState();
@@ -22,6 +27,7 @@ const AddHabit = ({ uid }) => {
   const {doc_error, document} = useDocument('users', user.uid)
   const [redirect, setRedirect] = useState(false);
 
+ 
   useEffect(() => {
     projectFirestore
       .collection("habits")
@@ -39,7 +45,7 @@ const AddHabit = ({ uid }) => {
       });
   }, [id]);
 
-
+//Requirement 2.1
   const handleSubmit = async (event) => {
     event.preventDefault();
     
@@ -57,7 +63,7 @@ const AddHabit = ({ uid }) => {
       amount,
     });
     if (habit.Type === 'exercise'){
-      let total = Number(document['exercisePoints']) + Number(amount);
+      let total = Math.round(Number(document['exercisePoints']) + Number(amount*habit.Points));
     
       await updateDocument(user.uid,
         {exercisePoints: total.toString()
@@ -65,7 +71,7 @@ const AddHabit = ({ uid }) => {
       )
     }
     if (habit.Type === 'mental'){
-      let total = Number(document['mentalPoints']) + Number(amount);
+      let total = Math.round(Number(document['mentalPoints']) + Number(amount*habit.Points));
     
       await updateDocument(user.uid,
         {mentalPoints: total.toString()
@@ -73,7 +79,7 @@ const AddHabit = ({ uid }) => {
       )
     }
     if (habit.Type === 'eating'){
-      let total = Number(document['eatingPoints']) + Number(amount);
+      let total = Math.round(Number(document['eatingPoints']) + Number(amount*habit.Points));
     
       await updateDocument(user.uid,
         {eatingPoints: total.toString()
@@ -82,7 +88,7 @@ const AddHabit = ({ uid }) => {
     }
 
    
-    let totalPoints = Number(document['totalPoints'])+ Number(amount);
+    let totalPoints = Math.round(Number(document['totalPoints'])+ Number(amount*habit.Points));
     await updateDocument(user.uid, {totalPoints: totalPoints.toString()})
 
     // setHabit("");
@@ -105,6 +111,8 @@ const AddHabit = ({ uid }) => {
     setError(null);
   };
 
+
+  //Requirement 2.1.2
   return (
     <div>
       { redirect ? (<Redirect push to="/habit-log"/>) : null }
@@ -120,6 +128,7 @@ const AddHabit = ({ uid }) => {
           <form onSubmit={handleSubmit}>
             <label htmlFor="habit">Habit: {habit.Title} </label>
             <p>{habit.Description}</p>
+            <p>{habit.Instructions}</p>
 
             <label htmlFor="Amount">Amount</label>
             <input

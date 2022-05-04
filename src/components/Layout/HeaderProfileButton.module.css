@@ -11,7 +11,7 @@
     align-items: left;
     border-radius: 50px;
     font-weight: bold;
-    margin-right: 15rem;
+    margin-right: 5rem;
     
   }
   
@@ -23,7 +23,8 @@
   .icon {
     width: 1.35rem;
     height: 1.35rem;
-    margin-right: 1rem;
+    margin-right: 3rem;
+    
     justify-self: left;
   }
   

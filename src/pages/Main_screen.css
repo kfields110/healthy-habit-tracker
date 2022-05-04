@@ -1,15 +1,23 @@
-/* .div1 {
+.div1 {
     width:50%;
     float:left;
+    margin-bottom: 15px;
 }
 
 .div2 {
-    width:50%;
-    float:right;
-} */
+    width:33%;
+    float: right;
+    margin-top: 15px;
+}
+
+.div3{
+    width: 50%;
+    margin-left: 50px;
+}
 
 .container {
-    display: flex;
-    flex-grow: 1;
-    padding: 0 60px;
+    display: grid;
+    position: relative;
+  
 }
+

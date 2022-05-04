@@ -1,5 +1,5 @@
 import './Avatar.css'
-
+//Requirement 6.1
 export default function Avatar({src}){
     return (
         <div className="avatar">

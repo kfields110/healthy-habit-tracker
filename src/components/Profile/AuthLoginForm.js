@@ -6,6 +6,7 @@ import classes from "./AuthForm.module.css";
 
 
 // This is the main functionality of connecting to the Firebase API to allow for the creating and login process of users.
+//Requirement 6.0
 
 const AuthLoginForm = () => {
   const [isLogin, setIsLogin] = useState(true);
