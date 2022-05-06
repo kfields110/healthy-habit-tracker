@@ -2,6 +2,9 @@ import React, { useRef } from "react";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import {useFirestore} from '../../hooks/useFirestore'
 
+//This modal allows for a user to change their measurement and is then saved to firebase when submitted.
+//Requirement 1.2.0
+
 function MeasurementEditModal(props) {
   const {user} = useAuthContext()
   const heightRef = useRef();

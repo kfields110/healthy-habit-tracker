@@ -1,5 +1,7 @@
 import classes from './Overview.module.css';
 
+//Overview panel for main page splash
+
 const Overview = () => {
     return (
         <section className={classes.summary}>

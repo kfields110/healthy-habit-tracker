@@ -3,6 +3,8 @@ import React from "react";
 import AddressEditModal from "./AddressEditModal";
 import Backdrop from "./Backdrop";
 
+//Did not end up in the final project
+
 const addressInfo = [
   {
     id: "a1",

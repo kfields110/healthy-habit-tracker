@@ -5,7 +5,7 @@ import HabitList from "./HabitList";
 
 
 //Requirement 2.2.3
-// The component responsible for displaying all eating habits.
+// The component responsible for displaying all mental habits.
 const MentalHabits = () => {
     const [habits, setHabits] = useState([]);
     const eating_choices = [];

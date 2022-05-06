@@ -1,7 +1,8 @@
 import classes from './UserHabits.module.css';
 import Card from '../UI/Card';
 
-
+//Requirement 5.1.0
+//Displays user habits starting with the most recent
 export default function UserHabits ({habits}) {
 
    

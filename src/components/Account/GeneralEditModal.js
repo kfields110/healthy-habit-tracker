@@ -2,6 +2,9 @@ import React, { useRef } from "react";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import {useFirestore} from '../../hooks/useFirestore'
 
+//Modal that pops up and sends user input to Firestore database
+//Requirement 1.1.1
+
 function GeneralEditModal(props) {
   const {user} = useAuthContext()
   const firstNameRef = useRef();

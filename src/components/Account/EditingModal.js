@@ -1,5 +1,9 @@
 import React, {useRef} from "react";
 
+//Reusable modal component that can be used to allow users to change information
+//Requirement 1.1.1
+
+
 function Modal(props) {
   const infoInputRef = useRef();
   var data = "from Modal to Info section";

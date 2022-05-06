@@ -4,6 +4,8 @@ import { useDocument } from "../../hooks/useDocument";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
 
+//User points section that displays points earned by user
+//Requirement 1.3.0
 
 function UserPoints() {
 

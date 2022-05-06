@@ -3,7 +3,7 @@ import { projectAuth, projectFirestore, projectStorage } from '../firebase/confi
 import { useAuthContext } from './useAuthContext'
 
 //Component to allow a user to create an account and save it to the Firestore
-// Requirement 8.2.0
+// Requirement 9.2.0
 
 export const useSignup = () => {
   const [error, setError] = useState(null)

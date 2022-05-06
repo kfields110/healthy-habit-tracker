@@ -1,6 +1,7 @@
 import { useAuthContext } from '../../hooks/useAuthContext';
 import classes from './HeaderProfileButton.module.css';
 import Avatar from '../Profile/Avatar';
+
 //Requirement 3.1.0
 
 const HeaderProfileButton = props => {
