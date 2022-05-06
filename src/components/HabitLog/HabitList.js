@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom';
 
 
 //This component is responsible for dynamically rendering each habit in the Firestore database
+//Requirement 2.2.0
 
 export default function HabitList ({habits}) {
     

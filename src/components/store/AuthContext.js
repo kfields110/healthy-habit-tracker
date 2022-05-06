@@ -1,6 +1,11 @@
 import { createContext, useEffect, useReducer } from 'react'
 import { projectAuth } from '../../firebase/config'
 
+//This component creates an AuthContext which will enable the program to know whether
+//A user is looged in or out and this provides an auth token, which is kept on firebase
+// and is used to access user specific content throughout the rest of the website
+// If you look at App.js, you can see the authcontext wrapping of the entire website.
+
 export const AuthContext = createContext()
 
 export const authReducer = (state, action) => {

@@ -1,3 +1,6 @@
+
+//dummy data used for testing purposes
+
 export const users = [
     {
         name: "Shawn Hanna",

@@ -1,11 +1,13 @@
 import React from "react";
-import profilepic from "./images/profilepic.png";
 import "./AccountPage.css";
 import GeneralInfoSection from "./GeneralInfoSection";
 import MeasurementInfoSection from "./MeasurementInfoSection";
 import GoalCompletionSection from "./GoalCompletionSection";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import UserPoints from "./UserPoints";
+
+//Account page layout that renders the all info needed
+
 
 function AccountPage() {
 

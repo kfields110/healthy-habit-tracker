@@ -1,13 +1,13 @@
 import './Leaderboard.css';
 import Profiles from '../Profile/Profile';
-import { users } from '../Database/database';
 import React, { useState } from 'react';
 import Card from '../UI/Card'
 import { useCollection } from '../../hooks/useCollection';
-import LeaderboardUsers from './LeaderboardUsers';
+
 
 
 // This is the Leaderboard which will display user data.
+//Leaderboard can sort based on what user selects which is shown below
 //Requirement 4.0.0
 const Leaderboard = () => {
 
@@ -40,7 +40,7 @@ const Leaderboard = () => {
                 </div>
             })} */}
             {/* <LeaderboardUsers/> */}
-           {documents && <Profiles Leaderboard={between(documents.slice(0,9), period)} type={period}></Profiles>}
+           {documents  && <Profiles Leaderboard={between(documents.slice(0,9), period)} type={period}></Profiles>}
             </Card>
         </div>
         
@@ -51,7 +51,7 @@ const Leaderboard = () => {
 function between(data, period){
 
     // sort with asending order
-    if (period == "totalPoints"){
+    if (period === "totalPoints"){
     return data.sort((a, b) => {
     
         if ( a.totalPoints === b.totalPoints){
@@ -63,7 +63,7 @@ function between(data, period){
  
     })
     }
-    if (period == "mentalPoints"){
+    if (period === "mentalPoints"){
         return data.sort((a, b) => {
         
             if ( a.mentalPoints === b.mentalPoints){
@@ -75,7 +75,7 @@ function between(data, period){
      
         })
         }
-    if (period == "eatingPoints"){
+    if (period === "eatingPoints"){
         return data.sort((a, b) => {
         
             if ( a.eatingPoints === b.eatingPoints){
@@ -87,7 +87,7 @@ function between(data, period){
         
         })
         }
-    if (period == "exercisePoints"){
+    if (period === "exercisePoints"){
         return data.sort((a, b) => {
         
             if ( a.exercisePoints === b.exercisePoints){

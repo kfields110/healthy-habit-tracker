@@ -7,7 +7,8 @@ import {useCollection} from '../../hooks/useCollection'
 import { useAuthContext } from "../../hooks/useAuthContext";
 
 
-
+//General Info section that displays user information
+//Requirement 1.1.0
 
 function GeneralInfoSection() {
 

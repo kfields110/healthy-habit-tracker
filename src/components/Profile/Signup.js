@@ -4,6 +4,9 @@ import {useSignup} from '../../hooks/useSignup'
 // styles
 import styles from './Signup.module.css'
 
+//Create account signup form
+//Requirement 6.0.0
+
 export default function Signup() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')

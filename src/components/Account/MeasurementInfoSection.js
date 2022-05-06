@@ -2,11 +2,11 @@ import { useState } from "react";
 import React from "react";
 import MeasurementEditModal from "./MeasurementEditModal";
 import Backdrop from "./Backdrop";
-import {useCollection} from '../../hooks/useCollection'
 import { useAuthContext } from "../../hooks/useAuthContext";
 import {useDocument} from "../../hooks/useDocument"
 
 //function that connects to firebase documents. Allows users to input information about themselves. 
+//Requirement 1.2.0
 
 function MeasurementInfoSection() {
   const {user} = useAuthContext()

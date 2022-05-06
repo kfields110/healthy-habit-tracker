@@ -2,6 +2,9 @@ import Card from '../UI/Card'
 import Button from "../UI/Button";
 import classes from "./CreateAccountModal.module.css";
 
+//Pop up to allow for a user to create an account
+//Requirement 6.0.0
+
 const CreateAccountModal = (props) => {
   return (
     <div>

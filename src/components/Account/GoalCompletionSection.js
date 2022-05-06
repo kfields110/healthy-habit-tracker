@@ -10,6 +10,8 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import Card from "../UI/Card";
 
 //This component displays the amount of points each user earned toward their daily goals
+//Requirement 7.0.0
+//Requirement 7.1.1
 
 
 function GoalCompletionSection(props) {

@@ -3,7 +3,7 @@
  import 'firebase/auth';
  import 'firebase/storage'
 
- //Requirement 7.0.0
+ //Requirement 8.0.0
 
  const firebaseConfig = {
    apiKey: "AIzaSyDjyTcq3Y7uenkFWKypKn8rUDGJeQKqyUI",

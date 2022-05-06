@@ -1,5 +1,8 @@
 import classes from './StreakTracker.module.css';
 
+
+//Never completed
+
 const StreakTracker = () => {
     return (
         <section className={classes.summary}>

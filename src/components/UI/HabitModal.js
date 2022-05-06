@@ -3,7 +3,7 @@ import Button from "./Button";
 import classes from "./ErrorModal.module.css";
 
 const HabitModal = (props) => {
-  // A resuable error pop up screen that can allow users to know if something went wrong. 
+  // A resuable error pop up screen that can allow users input habits
 
   return (
     <div>
